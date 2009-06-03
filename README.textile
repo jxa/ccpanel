@@ -1,12 +1,6 @@
 h1. ccpanel
 
-ccpanel is a GTK clone of ccmenu, which is Mac only. It periodically polls your CruiseControl.rb server to determine your current build status, then displays an indicator in the status panel.
-
-h3. Requirements
-
-ruby-gnome2 - On debian/ubuntu you can do 'sudo apt-get install ruby-gnome2' (i think... still need to verify)
-
-libnotify && notify-send - for pop-up notifications you need to have the libnotify and notify-send packages installed. 
+_ccpanel_ is a GTK clone of "ccmenu":http://ccmenu.sourceforge.net/, a Mac-only CruiseControl monitoring widget. It periodically polls your CruiseControl.rb server to determine your current build status, then displays an indicator in the status panel.
 
 h3. Notes
 
@@ -16,10 +10,7 @@ I used the images from the ccmenu project for my initial set of icons.
 
 h3. Install
 
- sudo apt-get install ruby-gnome2
-
- # if you want 'growl' pop-up notifications
- sudo apt-get install libnotify-bin
-
- git clone git://github.com/jxa/ccpanel.git 
- nohup ruby ccpanel/src/ccpanel.rb &
+# sudo apt-get install ruby-gnome2
+# sudo apt-get install libnotify-bin (if you want 'growl' pop-up notifications)
+# git clone git://github.com/jxa/ccpanel.git 
+# ruby ccpanel/src/ccpanel.rb &
