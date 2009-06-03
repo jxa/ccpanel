@@ -12,9 +12,14 @@ h3. Notes
 
 At the moment, only https with basic auth is supported because that is the setup I have. If you would like to see other options either wait a couple of weeks until I get around to it, or email me to kick my ass into gear.
 
-I have used the images from the ccmenu project for my initial set of icons.
+I used the images from the ccmenu project for my initial set of icons.
 
 h3. Install
 
+ sudo apt-get install ruby-gnome2
+
+ # if you want 'growl' pop-up notifications
+ sudo apt-get install libnotify-bin
+
  git clone git://github.com/jxa/ccpanel.git 
- ruby ccpanel/src/ccpanel.rb &
+ nohup ruby ccpanel/src/ccpanel.rb &
