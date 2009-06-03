@@ -4,7 +4,9 @@ ccpanel is a GTK clone of ccmenu, which is Mac only. It periodically polls your 
 
 h3. Requirements
 
-ruby-gnome2, rubygems, nokogiri
+ruby-gnome2 - On debian/ubuntu you can do 'sudo apt-get install ruby-gnome2' (i think... still need to verify)
+
+libnotify && notify-send - for pop-up notifications you need to have the libnotify and notify-send packages installed. 
 
 h3. Notes
 

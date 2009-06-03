@@ -4,7 +4,6 @@ require 'panel'
 
 =begin
 TODO:
-- drop nokogiri for rexml (one less thing to install)
 - validate urls
 - (maybe) cherry-pick projects to monitor
 =end

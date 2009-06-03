@@ -1,8 +1,7 @@
 require 'uri'
 require 'net/http'
 require 'net/https'
-require 'rubygems'
-require 'nokogiri'
+require 'rexml/document'
 require 'project'
 
 module CCPanel
@@ -13,20 +12,20 @@ module CCPanel
     end
 
     def update
-      doc = Nokogiri::XML(get_report)
-      doc.css('Project').each do |proj|
-        a = proj.attributes
+      doc = REXML::Document.new(get_report)
+      doc.elements.each('Projects/Project') do |project|
+        a = project.attributes
         proj = {
-          :name     => a['name'].content,
-          :url      => a['webUrl'].content,
-          :activity => a['activity'].content,
-          :status   => a['lastBuildStatus'].content,
+          :name     => a['name'],
+          :url      => a['webUrl'],
+          :activity => a['activity'],
+          :status   => a['lastBuildStatus'],
           :status_report => self }
 
         if @projects.has_key?(proj[:name])
           @projects[proj[:name]].update_attributes(proj)
         else
-          @projects[a['name'].content] = Project.new(proj)
+          @projects[proj[:name]] = Project.new(proj)
         end
       end
     rescue Timeout::Error
