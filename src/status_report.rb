@@ -29,6 +29,11 @@ module CCPanel
           @projects[a['name'].content] = Project.new(proj)
         end
       end
+    rescue Timeout::Error
+      # TODO: if projects are present, set status to inactive
+      # else create a blank project with the server name
+      # and set status to inactive.
+      # blank project might create problems. is there a better way?
     end
 
     def projects
@@ -44,7 +49,9 @@ module CCPanel
     def get_https_with_basic_auth
       username, password = @uri.userinfo.split(':')
       http = Net::HTTP.new(@uri.host, @uri.port)
-      req = Net::HTTP::Get.new(@uri.path)
+      http.open_timeout = 5
+      path = @uri.path == '' ? '/XmlStatusReport.aspx' : @uri.path
+      req = Net::HTTP::Get.new(path)
       http.use_ssl = true
       req.basic_auth username, password
       response = http.request(req)

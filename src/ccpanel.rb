@@ -4,10 +4,8 @@ require 'panel'
 
 =begin
 TODO:
-- set preferences through menu
-  - http://ruby-gnome2.sourceforge.jp/hiki.cgi?tut-gconf
-- handle left click by popping up preferences
 - drop nokogiri for rexml (one less thing to install)
+- validate urls
 - (maybe) cherry-pick projects to monitor
 =end
 
