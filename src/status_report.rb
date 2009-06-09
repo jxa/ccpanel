@@ -52,6 +52,9 @@ module CCPanel
       path = @uri.path == '' ? '/XmlStatusReport.aspx' : @uri.path
       req = Net::HTTP::Get.new(path)
       http.use_ssl = true
+
+      # quiet HTTPS warning messages
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       req.basic_auth username, password
       response = http.request(req)
       return response.body
